@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Christian Learning Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Load your layout component -->
+    <script type="module" src="./components/main-layout.js"></script>
+
+    <!-- (Optional) Add global CSS -->
+    <link rel="stylesheet" href="./styles/global.css"/>
+</head>
+<body>
+<main-layout>
+    <div slot="header">
+        <h1>My Christian Learning Hub</h1>
+    </div>
+
+    <div slot="nav">
+        <div id="sidebar-nav">
+            <div class="nav-section">
+                <button class="nav-toggle">Framework</button>
+                <ul class="nav-items">
+                    <li><a href="#/page1">Page 1</a></li>
+                    <li><a href="#/page2">Page 2</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <button class="nav-toggle">Tools</button>
+                <ul class="nav-items">
+                    <li><a href="#/tool-a">Tool A</a></li>
+                    <li><a href="#/tool-b">Tool B</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <button class="nav-toggle">Other</button>
+                <ul class="nav-items">
+                    <li><a href="#/about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div slot="main">
+        <h2>Welcome!</h2>
+        <p>This is the main content area. Scroll to test sticky sidebars.</p>
+        <div style="height: 1500px;"></div>
+    </div>
+
+    <div slot="right">
+        <p>Table of Contents</p>
+        <ul>
+            <li><a href="#section1">Intro</a></li>
+            <li><a href="#section2">Main Point</a></li>
+            <li><a href="#section3">Conclusion</a></li>
+        </ul>
+    </div>
+
+    <div slot="footer">
+        <p>&copy; 2025 – <a href="https://github.com/yourname">My GitHub</a></p>
+    </div>
+</main-layout>
+
+<script>
+    // Collapse logic
+    document.querySelectorAll('.nav-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+            const list = button.nextElementSibling;
+            list.style.display = list.style.display === 'none' ? 'block' : 'none';
+        });
+    });
+
+    // Active link highlighting
+    function setActiveLink() {
+        const current = location.hash;
+        document.querySelectorAll('.nav-items a').forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === current);
+        });
+    }
+
+    window.addEventListener('hashchange', setActiveLink);
+    window.addEventListener('DOMContentLoaded', setActiveLink);
+</script>
+
+</body>
+</html>
