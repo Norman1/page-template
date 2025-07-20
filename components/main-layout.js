@@ -119,6 +119,12 @@ aside.right:not(:has(::slotted(*))) {
   overflow: hidden;
 }
 
+/* When right sidebar is empty, adjust grid */
+:host:has(aside.right:empty),
+:host:has(aside.right:not(:has(::slotted(*)))) {
+  grid-template-columns: var(--sidebar-left-width) 1fr;
+}
+
 /* Right sidebar TOC styling - JetBrains style */
 aside.right ::slotted(*) {
   font-size: 0.875rem;
@@ -270,10 +276,10 @@ footer {
 /* Mobile styles */
 @media (max-width: 768px) {
   :host {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     grid-template-areas: 
       "header"
-      "main";
+      "main" !important;
   }
   
   .menu-toggle {
@@ -287,8 +293,10 @@ footer {
     bottom: 0;
     width: var(--mobile-sidebar-width);
     transform: translateX(-100%);
+    transition: transform 0.3s ease;
     z-index: 999;
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    grid-area: unset !important;
   }
   
   :host([mobile-menu-open]) aside.left {
@@ -297,11 +305,14 @@ footer {
   
   /* Hide right sidebar on mobile */
   aside.right {
-    display: none;
+    display: none !important;
+    grid-area: unset !important;
   }
   
   main {
     padding: var(--spacing-md);
+    grid-area: main !important;
+    width: 100%;
   }
   
   /* Overlay when menu is open */
