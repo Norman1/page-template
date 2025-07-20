@@ -7,10 +7,13 @@ class MainLayout extends HTMLElement {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #0f1419;
   color: #f0f6fc;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  max-height: 100vh;
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 200px 1fr 220px;
+  grid-template-areas: 
+    "header header header"
+    "left main right";
+  height: 100vh;
   box-sizing: border-box;
 }
 
@@ -18,57 +21,52 @@ class MainLayout extends HTMLElement {
   box-sizing: border-box;
 }
 
-/* Non-sticky header */
+/* Header */
 header {
-  position: relative;
-  height: 60px;
+  grid-area: header;
   background: #161b22;
   border-bottom: 1px solid #30363d;
-}
-
-/* Content wrapper with sidebars */
-.content-wrapper {
   display: flex;
-  flex: 1;
+  align-items: center;
 }
 
-/* Fixed left sidebar */
+/* Left sidebar */
 aside.left {
-  position: sticky;
-  top: 0;
-  width: 200px;
-  height: 100vh;
+  grid-area: left;
   background: #161b22;
   border-right: 1px solid #30363d;
   overflow-y: auto;
   padding: 1rem;
-  flex-shrink: 0;
 }
 
-/* Fixed right sidebar */
+/* Right sidebar */
 aside.right {
-  position: sticky;
-  top: 0;
-  width: 220px;
-  height: 100vh;
+  grid-area: right;
   background: #161b22;
   border-left: 1px solid #30363d;
   overflow-y: auto;
   padding: 1rem;
-  flex-shrink: 0;
+}
+
+:host(:not([with-right])) {
+  grid-template-columns: 200px 1fr;
+  grid-template-areas: 
+    "header header"
+    "left main";
 }
 
 :host(:not([with-right])) .right {
   display: none;
 }
 
-/* Main content area - scrollable */
+/* Main content area */
 main {
-  flex: 1;
+  grid-area: main;
   background: #161b22;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 /* Footer within main content */
@@ -102,6 +100,13 @@ footer {
 
 /* Mobile styles */
 @media (max-width: 768px) {
+  :host {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "header"
+      "main";
+  }
+  
   .menu-toggle {
     display: block;
   }
@@ -127,8 +132,6 @@ footer {
   }
   
   main {
-    margin-left: 0;
-    margin-right: 0;
     padding: 1rem;
   }
   
@@ -216,23 +219,21 @@ footer {
         <slot name="header"></slot>
       </header>
 
-      <div class="content-wrapper">
-        <aside class="left">
-          <slot name="nav"></slot>
-        </aside>
+      <aside class="left">
+        <slot name="nav"></slot>
+      </aside>
 
-        <main>
-          <slot name="main"></slot>
-          
-          <footer>
-            <slot name="footer"></slot>
-          </footer>
-        </main>
+      <main>
+        <slot name="main"></slot>
+        
+        <footer>
+          <slot name="footer"></slot>
+        </footer>
+      </main>
 
-        <aside class="right">
-          <slot name="right"></slot>
-        </aside>
-      </div>
+      <aside class="right">
+        <slot name="right"></slot>
+      </aside>
       
       <div class="mobile-overlay"></div>
     `;
