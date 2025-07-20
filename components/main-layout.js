@@ -36,7 +36,7 @@ aside.left {
   position: sticky;
   top: 0;
   width: 200px;
-  height: calc(100vh - 60px);
+  height: 100vh;
   background: #161b22;
   border-right: 1px solid #30363d;
   overflow-y: auto;
@@ -49,7 +49,7 @@ aside.right {
   position: sticky;
   top: 0;
   width: 220px;
-  height: calc(100vh - 60px);
+  height: 100vh;
   background: #161b22;
   border-left: 1px solid #30363d;
   overflow-y: auto;
