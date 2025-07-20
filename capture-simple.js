@@ -29,7 +29,12 @@ async function captureScreenshots() {
     const pages = [
         { name: 'home', path: '/' },
         { name: 'page-one', path: '#/page1' },
-        { name: 'about', path: '#/about' }
+        { name: 'about', path: '#/about' },
+        { name: 'tool-a', path: '#/tool-a' },
+        { name: 'test-with-sidebar', path: '#/test-with-sidebar' },
+        { name: 'test-scrollable', path: '#/test-scrollable' },
+        { name: 'test-minimal', path: '#/test-minimal' },
+        { name: 'test-full', path: '#/test-full' }
     ];
     
     for (const viewport of viewports) {

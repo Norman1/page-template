@@ -4,87 +4,76 @@ class MainLayout extends HTMLElement {
         this.shadowRoot.innerHTML = `
       <style>
 :host {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  width: 100vw;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #0f1419;
   color: #f0f6fc;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  width: 100%;
-}
-
+/* Fixed header */
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
   background: #161b22;
-  padding: 1rem;
-  position: relative;
   border-bottom: 1px solid #30363d;
+  z-index: 100;
 }
 
-.layout {
-  display: grid;
-  grid-template-columns: 200px 1fr 220px;
-  gap: 0;
-  flex: 1;
-  min-height: calc(100vh - 60px);
-  width: 100vw;
-}
-
-:host(:not([with-right])) .layout {
-  grid-template-columns: 200px 1fr;
-}
-
-/* Only limit main content on extremely wide screens */
-@media (min-width: 2400px) {
-  .layout {
-    grid-template-columns: 200px minmax(auto, 1800px) 220px;
-    justify-content: start;
-  }
-  
-  :host(:not([with-right])) .layout {
-    grid-template-columns: 200px minmax(auto, 1800px);
-  }
-}
-
+/* Fixed left sidebar */
 aside.left {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 200px;
+  bottom: 0;
   background: #161b22;
-  padding: 1rem;
   border-right: 1px solid #30363d;
   overflow-y: auto;
-  min-height: 0;
-}
-
-main {
-  background: #161b22;
-  padding: 1.5rem;
-  min-width: 0;
-  overflow-y: auto;
-  min-height: 0;
-}
-
-aside.right {
-  background: #161b22;
   padding: 1rem;
+}
+
+/* Fixed right sidebar */
+aside.right {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 220px;
+  bottom: 0;
+  background: #161b22;
   border-left: 1px solid #30363d;
   overflow-y: auto;
-  min-height: 0;
+  padding: 1rem;
 }
 
 :host(:not([with-right])) .right {
   display: none;
 }
 
-footer {
+/* Main content area - scrollable */
+main {
+  margin-top: 60px;
+  margin-left: 220px;
+  margin-right: 240px;
   background: #161b22;
+  padding: 1.5rem;
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+}
+
+:host(:not([with-right])) main {
+  margin-right: 0;
+}
+
+/* Footer within main content */
+footer {
+  background: #21262d;
   padding: 1rem;
-  margin-top: auto;
+  margin: auto -1.5rem 0 -1.5rem;
   border-top: 1px solid #30363d;
+  margin-top: auto;
 }
 
 /* Mobile menu toggle */
@@ -113,15 +102,6 @@ footer {
     display: block;
   }
   
-  .layout {
-    grid-template-columns: 1fr;
-    padding: 0.5rem;
-  }
-  
-  :host(:not([with-right])) .layout {
-    grid-template-columns: 1fr;
-  }
-  
   aside.left {
     position: fixed;
     left: 0;
@@ -140,6 +120,12 @@ footer {
   /* Hide right sidebar on mobile */
   aside.right {
     display: none;
+  }
+  
+  main {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1rem;
   }
   
   /* Overlay when menu is open */
@@ -221,32 +207,28 @@ footer {
 
       </style>
 
-      <div class="container">
-        <header>
-          <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-          <slot name="header"></slot>
-        </header>
+      <header>
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <slot name="header"></slot>
+      </header>
 
-        <div class="layout">
-          <aside class="left">
-            <slot name="nav"></slot>
-          </aside>
+      <aside class="left">
+        <slot name="nav"></slot>
+      </aside>
 
-          <main>
-            <slot name="main"></slot>
-          </main>
-
-          <aside class="right">
-            <slot name="right"></slot>
-          </aside>
-        </div>
-
+      <main>
+        <slot name="main"></slot>
+        
         <footer>
           <slot name="footer"></slot>
         </footer>
-        
-        <div class="mobile-overlay"></div>
-      </div>
+      </main>
+
+      <aside class="right">
+        <slot name="right"></slot>
+      </aside>
+      
+      <div class="mobile-overlay"></div>
     `;
     
         this.setupMobileMenu();

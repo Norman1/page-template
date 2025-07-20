@@ -129,11 +129,21 @@ class NavSidebar extends HTMLElement {
         ` : ''}
 
         <div class="nav-section">
+          <button class="nav-toggle">Test Pages</button>
+          <ul class="nav-items">
+            <li><a href="#/test-with-sidebar">With Right Sidebar</a></li>
+            <li><a href="#/test-scrollable">Scrollable Sidebar</a></li>
+            <li><a href="#/test-minimal">Minimal Content</a></li>
+            <li><a href="#/test-full">Full Content</a></li>
+            <li><a href="#/test-404">Test 404</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
           <button class="nav-toggle">Resources</button>
           <ul class="nav-items">
             <li><a href="#/about">About Learning Hub</a></li>
             <li><a href="#/privacy">Privacy & Terms</a></li>
-            <li><a href="#/test-404">Test 404</a></li>
           </ul>
         </div>
       </div>

@@ -8,6 +8,11 @@ const routes = {
     '#/about': 'page-about',
     '#/profile': 'user-profile',
     '#/privacy': 'privacy-policy',
+    '#/test-with-sidebar': 'test-with-sidebar',
+    '#/test-scrollable': 'test-scrollable',
+    '#/test-minimal': 'test-minimal',
+    '#/test-full': 'test-full',
+    '#/test-404': 'not-found-page',
     // Add other pages here
 };
 
