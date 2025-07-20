@@ -28,6 +28,11 @@ header {
   border-bottom: 1px solid #30363d;
   display: flex;
   align-items: center;
+  position: relative;
+}
+
+header ::slotted(*) {
+  flex: 1;
 }
 
 /* Left sidebar */
