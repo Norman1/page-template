@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://norman1.github.io/page-template/sitemap.xml
+
+# Allow crawling of JavaScript files for SPA content
+Allow: *.js
+Allow: *.css
+
+# Disallow temp and development files
+Disallow: /screenshots/
+Disallow: /docker/
+Disallow: /.claude/
+Disallow: /.idea/
+Disallow: /node_modules/

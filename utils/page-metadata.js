@@ -55,11 +55,17 @@ export function updatePageMetadata(path) {
     // Update or create meta keywords
     updateMetaTag('keywords', metadata.keywords);
     
+    // Add canonical URL
+    updateCanonicalUrl(window.location.href);
+    
     // Update Open Graph meta tags for social sharing
     updateMetaTag('og:title', metadata.title, 'property');
     updateMetaTag('og:description', metadata.description, 'property');
     updateMetaTag('og:type', 'website', 'property');
     updateMetaTag('og:url', window.location.href, 'property');
+    
+    // Add structured data
+    updateStructuredData(metadata, path);
 }
 
 function updateMetaTag(name, content, attribute = 'name') {
@@ -72,6 +78,46 @@ function updateMetaTag(name, content, attribute = 'name') {
     }
     
     meta.setAttribute('content', content);
+}
+
+function updateCanonicalUrl(url) {
+    let canonical = document.querySelector('link[rel="canonical"]');
+    
+    if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+    }
+    
+    canonical.setAttribute('href', url);
+}
+
+function updateStructuredData(metadata, path) {
+    // Remove existing structured data
+    const existing = document.querySelector('script[type="application/ld+json"]#page-data');
+    if (existing) {
+        existing.remove();
+    }
+    
+    // Create new structured data
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": metadata.title,
+        "description": metadata.description,
+        "url": window.location.href,
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Learning Hub",
+            "url": window.location.origin + window.location.pathname
+        }
+    };
+    
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'page-data';
+    script.textContent = JSON.stringify(structuredData, null, 2);
+    document.head.appendChild(script);
 }
 
 export function getPageMetadata(path) {
