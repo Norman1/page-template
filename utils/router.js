@@ -65,15 +65,6 @@ export function initRouter() {
         // Clean up after transition
         setTimeout(() => {
             currentPage = newPage;
-            
-            // Check if content needs scrolling and add appropriate class
-            const mainElement = outlet.closest('main');
-            if (mainElement) {
-                // Check if content height exceeds container
-                const needsScrolling = newPage.scrollHeight > mainElement.clientHeight - 120; // Account for footer
-                mainElement.classList.toggle('has-long-content', needsScrolling);
-            }
-            
             isTransitioning = false;
         }, 100);
     }

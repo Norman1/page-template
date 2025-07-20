@@ -195,10 +195,7 @@ main {
   overflow-y: auto;
 }
 
-/* Hide scrollbar when content is minimal */
-main:not(.has-long-content) {
-  overflow-y: hidden;
-}
+/* Always allow scrolling in main content area */
 
 /* Ensure sidebar scrolling always works */
 aside.left {
