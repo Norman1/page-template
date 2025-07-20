@@ -119,6 +119,15 @@ aside.right:not(:has(::slotted(*))) {
   overflow: hidden;
 }
 
+/* Auto-hide when empty using modern CSS */
+aside.right:empty,
+aside.right:not(:has(::slotted(*))) {
+  width: 0;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+}
+
 /* When right sidebar is empty, adjust grid */
 :host:has(aside.right:empty),
 :host:has(aside.right:not(:has(::slotted(*)))) {
