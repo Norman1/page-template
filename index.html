@@ -113,9 +113,12 @@
 
 
 
-    <!-- Load non-critical CSS asynchronously -->
-    <link rel="preload" href="./styles/global.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="./styles/global.css"></noscript>
+    <!-- Load CSS files -->
+    <!-- Layout CSS (critical - loaded synchronously) -->
+    <link rel="stylesheet" href="./styles/layout.css">
+    <!-- Components CSS (customizable - loaded asynchronously) -->
+    <link rel="preload" href="./styles/components.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="./styles/components.css"></noscript>
 </head>
 <body>
 <main-layout>
