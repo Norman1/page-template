@@ -186,6 +186,16 @@ main {
   overflow-y: auto;
 }
 
+/* Hide scrollbar when content is minimal */
+main:not(.has-long-content) {
+  overflow-y: hidden;
+}
+
+/* Ensure sidebar scrolling always works */
+aside.left {
+  overflow-y: auto !important;
+}
+
 /* Content styling - JetBrains inspired */
 main ::slotted(h1) {
   font-size: 2rem;

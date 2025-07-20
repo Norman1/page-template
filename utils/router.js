@@ -23,10 +23,8 @@ let isTransitioning = false;
 export function initRouter() {
     const outlet = document.querySelector('#router-view');
     
-    // Set min-height to prevent layout shifts
-    outlet.style.minHeight = 'calc(100vh - 60px)';
-    outlet.style.position = 'relative';
-    outlet.style.overflow = 'hidden';
+    // Set styles to prevent scrollbar issues  
+    outlet.style.flex = '1';
 
     function render() {
         if (isTransitioning) return;
@@ -41,16 +39,8 @@ export function initRouter() {
         
         // Create new page element
         const newPage = document.createElement(tag);
-        newPage.style.position = 'absolute';
-        newPage.style.top = '0';
-        newPage.style.left = '0';
-        newPage.style.width = '100%';
         newPage.style.opacity = '0';
-        newPage.style.transform = 'translateY(20px)';
-        newPage.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-        
-        // Prepare for animation for better performance
-        prepareForAnimation(newPage, 'transform, opacity');
+        newPage.style.transition = 'opacity 0.15s ease';
         
         // Add new page to DOM
         outlet.appendChild(newPage);
@@ -61,11 +51,9 @@ export function initRouter() {
         // Transition in new page
         requestAnimationFrame(() => {
             newPage.style.opacity = '1';
-            newPage.style.transform = 'translateY(0)';
             
             if (currentPage) {
                 currentPage.style.opacity = '0';
-                currentPage.style.transform = 'translateY(-20px)';
             }
         });
         
@@ -74,10 +62,18 @@ export function initRouter() {
             if (currentPage) {
                 currentPage.remove();
             }
-            newPage.style.position = 'static';
             currentPage = newPage;
+            
+            // Check if content needs scrolling and add appropriate class
+            const mainElement = outlet.closest('main');
+            if (mainElement) {
+                // Check if content height exceeds container
+                const needsScrolling = newPage.scrollHeight > mainElement.clientHeight - 120; // Account for footer
+                mainElement.classList.toggle('has-long-content', needsScrolling);
+            }
+            
             isTransitioning = false;
-        }, 200);
+        }, 150);
     }
 
     window.addEventListener('hashchange', render);
