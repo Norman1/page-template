@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ae8fe20-6934-4840-8f11-ad5bac902685" name="Changes" comment="temp">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capture-screenshot.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/components/main-layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main-layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/capture-views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quick-capture.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run-visual-capture.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run-visual-capture.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/selenium-capture.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/simple-capture.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/test-full.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test-full.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,7 +269,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753013020363</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="temp">
+      <option name="closed" value="true" />
+      <created>1753013951726</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1753013951726</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

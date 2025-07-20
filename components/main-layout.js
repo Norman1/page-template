@@ -4,12 +4,37 @@ class MainLayout extends HTMLElement {
         this.shadowRoot.innerHTML = `
       <style>
 :host {
+  /* Layout dimensions */
+  --header-height: 60px;
+  --sidebar-left-width: 200px;
+  --sidebar-right-width: 220px;
+  --mobile-sidebar-width: 250px;
+  
+  /* Colors */
+  --bg-primary: #0f1419;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #0d1117;
+  --bg-footer: #21262d;
+  --text-primary: #f0f6fc;
+  --text-link: #58a6ff;
+  --border-color: #30363d;
+  --border-color-subtle: rgba(48, 54, 61, 0.5);
+  
+  /* Spacing */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  
+  /* Scrollbar */
+  --scrollbar-width: 10px;
+  --scrollbar-radius: 5px;
+  
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #0f1419;
-  color: #f0f6fc;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   display: grid;
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 200px 1fr 220px;
+  grid-template-rows: var(--header-height) 1fr;
+  grid-template-columns: var(--sidebar-left-width) 1fr var(--sidebar-right-width);
   grid-template-areas: 
     "header header header"
     "left main right";
@@ -23,18 +48,18 @@ class MainLayout extends HTMLElement {
 
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
 }
 
 ::-webkit-scrollbar-track {
   background: rgba(13, 17, 23, 0.3);
-  border-radius: 5px;
+  border-radius: var(--scrollbar-radius);
 }
 
 ::-webkit-scrollbar-thumb {
   background: rgba(48, 54, 61, 0.8);
-  border-radius: 5px;
+  border-radius: var(--scrollbar-radius);
   border: 1px solid rgba(13, 17, 23, 0.3);
 }
 
@@ -55,8 +80,8 @@ class MainLayout extends HTMLElement {
 /* Header */
 header {
   grid-area: header;
-  background: #161b22;
-  border-bottom: 1px solid #30363d;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   position: relative;
@@ -69,23 +94,23 @@ header ::slotted(*) {
 /* Left sidebar */
 aside.left {
   grid-area: left;
-  background: #0d1117;
-  border-right: 1px solid rgba(48, 54, 61, 0.5);
+  background: var(--bg-tertiary);
+  border-right: 1px solid var(--border-color-subtle);
   overflow-y: auto;
-  padding: 1.5rem 1rem;
+  padding: var(--spacing-lg) var(--spacing-md);
 }
 
 /* Right sidebar */
 aside.right {
   grid-area: right;
-  background: #0d1117;
-  border-left: 1px solid rgba(48, 54, 61, 0.5);
+  background: var(--bg-tertiary);
+  border-left: 1px solid var(--border-color-subtle);
   overflow-y: auto;
-  padding: 1.5rem 1rem;
+  padding: var(--spacing-lg) var(--spacing-md);
 }
 
 :host(:not([with-right])) {
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: var(--sidebar-left-width) 1fr;
   grid-template-areas: 
     "header header"
     "left main";
@@ -98,8 +123,8 @@ aside.right {
 /* Main content area */
 main {
   grid-area: main;
-  background: #161b22;
-  padding: 1.5rem;
+  background: var(--bg-secondary);
+  padding: var(--spacing-lg);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -107,10 +132,10 @@ main {
 
 /* Footer within main content */
 footer {
-  background: #21262d;
-  padding: 1rem;
-  margin: auto -1.5rem -1.5rem -1.5rem;
-  border-top: 1px solid #30363d;
+  background: var(--bg-footer);
+  padding: var(--spacing-md);
+  margin: auto calc(-1 * var(--spacing-lg)) calc(-1 * var(--spacing-lg)) calc(-1 * var(--spacing-lg));
+  border-top: 1px solid var(--border-color);
   margin-top: auto;
 }
 
@@ -118,15 +143,16 @@ footer {
 .menu-toggle {
   display: none;
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: var(--spacing-md);
+  left: var(--spacing-md);
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
   z-index: 1000;
-  padding: 0.5rem;
+  padding: var(--spacing-sm);
   line-height: 1;
+  color: var(--text-primary);
 }
 
 .menu-toggle:hover {
@@ -152,7 +178,7 @@ footer {
     left: 0;
     top: 0;
     bottom: 0;
-    width: 250px;
+    width: var(--mobile-sidebar-width);
     transform: translateX(-100%);
     z-index: 999;
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
@@ -168,7 +194,7 @@ footer {
   }
   
   main {
-    padding: 1rem;
+    padding: var(--spacing-md);
   }
   
   /* Overlay when menu is open */
@@ -192,12 +218,12 @@ footer {
 #sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--spacing-md);
   font-size: 0.95rem;
 }
 
 .nav-section {
-  border-bottom: 1px solid #30363d;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .nav-toggle {
@@ -205,21 +231,21 @@ footer {
   border: none;
   font-weight: bold;
   font-size: 1rem;
-  padding: 0.5rem 0;
+  padding: var(--spacing-sm) 0;
   cursor: pointer;
-  color: #f0f6fc;
+  color: var(--text-primary);
   text-align: left;
   width: 100%;
 }
 
 .nav-toggle:hover {
-  color: #58a6ff;
+  color: var(--text-link);
 }
 
 .nav-items {
   list-style: none;
   margin: 0;
-  padding: 0.25rem 0 0.5rem 0.75rem;
+  padding: 0.25rem 0 var(--spacing-sm) 0.75rem;
 }
 
 .nav-items li {
@@ -228,23 +254,23 @@ footer {
 
 .nav-items a {
   text-decoration: none;
-  color: #f0f6fc;
+  color: var(--text-primary);
   display: block;
   padding: 0.3rem 0;
   border-left: 2px solid transparent;
-  padding-left: 0.5rem;
+  padding-left: var(--spacing-sm);
   transition: all 0.2s ease;
 }
 
 .nav-items a:hover {
-  color: #58a6ff;
-  border-left-color: #58a6ff;
+  color: var(--text-link);
+  border-left-color: var(--text-link);
 }
 
 .nav-items a.active {
   font-weight: bold;
-  color: #58a6ff;
-  border-left-color: #58a6ff;
+  color: var(--text-link);
+  border-left-color: var(--text-link);
 }
 
 
