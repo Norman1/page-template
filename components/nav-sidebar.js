@@ -43,33 +43,38 @@ class NavSidebar extends HTMLElement {
         return {
             // Top-level pages (no category)
             topLevel: [
-                { href: '#/page1', title: 'Quick Start Guide' }
+                { href: '#/navigation-showcase', title: 'Navigation Showcase' }
             ],
             
             // Categories with optional subcategories
             categories: [
                 {
-                    id: 'getting-started',
-                    title: 'Getting Started',
+                    id: 'category-example',
+                    title: 'Category Example',
                     pages: [
-                        { href: '#/page2', title: 'Advanced Configuration' }
+                        { href: '#/category-page-demo', title: 'Category Page Demo' }
                     ],
-                    subcategories: []
-                },
-                {
-                    id: 'development',
-                    title: 'Development Tools',
-                    pages: [],
                     subcategories: [
                         {
-                            id: 'frontend',
-                            title: 'Frontend',
+                            id: 'subcategory-example',
+                            title: 'Subcategory Example',
                             pages: [
-                                { href: '#/tool-a', title: 'Component Generator' },
-                                { href: '#/tool-b', title: 'Theme Customizer' }
+                                { href: '#/nested-page-demo', title: 'Nested Page Demo' }
                             ]
                         }
                     ]
+                },
+                {
+                    id: 'layouts',
+                    title: 'Layouts',
+                    pages: [
+                        { href: '#/test-minimal', title: 'Minimal Content' },
+                        { href: '#/test-full', title: 'Full Content' },
+                        { href: '#/test-with-sidebar', title: 'With Right Sidebar' },
+                        { href: '#/test-scrollable', title: 'Scrollable Sidebar' },
+                        { href: '#/components-gallery', title: 'Components Gallery' }
+                    ],
+                    subcategories: []
                 },
                 ...(isLoggedIn ? [{
                     id: 'account',
@@ -78,35 +83,13 @@ class NavSidebar extends HTMLElement {
                         { href: '#/profile', title: 'My Profile' }
                     ],
                     subcategories: []
-                }] : []),
-                {
-                    id: 'testing',
-                    title: 'Test Pages',
-                    pages: [
-                        { href: '#/test-minimal', title: 'Minimal Content' },
-                        { href: '#/test-full', title: 'Full Content' }
-                    ],
-                    subcategories: [
-                        {
-                            id: 'layout-tests',
-                            title: 'Layout Tests',
-                            pages: [
-                                { href: '#/test-with-sidebar', title: 'With Right Sidebar' },
-                                { href: '#/test-scrollable', title: 'Scrollable Sidebar' },
-                                { href: '#/test-404', title: 'Test 404' }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 'resources',
-                    title: 'Resources',
-                    pages: [
-                        { href: '#/about', title: 'About Learning Hub' },
-                        { href: '#/privacy', title: 'Privacy & Terms' }
-                    ],
-                    subcategories: []
-                }
+                }] : [])
+            ],
+            
+            // Bottom-level standalone pages
+            bottomLevel: [
+                { href: '#/privacy', title: 'Privacy & Terms' },
+                { href: '#/test-404', title: 'Test 404' }
             ]
         };
     }
@@ -325,6 +308,7 @@ class NavSidebar extends HTMLElement {
       <div id="sidebar-nav">
         ${this.renderTopLevelPages(navData.topLevel)}
         ${navData.categories.map(category => this.renderCategory(category)).join('')}
+        ${this.renderBottomLevelPages(navData.bottomLevel)}
       </div>
     `;
     }
@@ -334,6 +318,20 @@ class NavSidebar extends HTMLElement {
         
         return `
             <div class="top-level-pages">
+                ${pages.map(page => `
+                    <div class="top-level-page">
+                        <a href="${page.href}">${page.title}</a>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    renderBottomLevelPages(pages) {
+        if (!pages || pages.length === 0) return '';
+        
+        return `
+            <div class="top-level-pages" style="border-top: 1px solid rgba(48, 54, 61, 0.3); border-bottom: none; padding-top: 0.5rem; margin-top: 0.5rem;">
                 ${pages.map(page => `
                     <div class="top-level-page">
                         <a href="${page.href}">${page.title}</a>

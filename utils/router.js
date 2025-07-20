@@ -2,19 +2,29 @@ import { updatePageMetadata } from './page-metadata.js';
 import { prepareForAnimation } from './performance-utils.js';
 
 const routes = {
-    '#/page1': 'page-one',
-    '#/page2': 'page-two',
-    '#/tool-a': 'tool-a',
-    '#/tool-b': 'tool-b',
-    '#/about': 'page-about',
-    '#/profile': 'user-profile',
-    '#/privacy': 'privacy-policy',
-    '#/test-with-sidebar': 'test-with-sidebar',
-    '#/test-scrollable': 'test-scrollable',
+    // Navigation showcase pages
+    '#/navigation-showcase': 'navigation-showcase',
+    '#/category-page-demo': 'category-page-demo', 
+    '#/nested-page-demo': 'nested-page-demo',
+    
+    // Layout examples
     '#/test-minimal': 'test-minimal',
     '#/test-full': 'test-full',
+    '#/test-with-sidebar': 'test-with-sidebar',
+    '#/test-scrollable': 'test-scrollable',
+    '#/components-gallery': 'components-gallery',
+    
+    // Account
+    '#/profile': 'user-profile',
+    
+    // Standalone pages
+    '#/privacy': 'privacy-policy',
     '#/test-404': 'not-found-page',
-    // Add other pages here
+    
+    // Legacy routes (for backwards compatibility)
+    '#/page1': 'navigation-showcase',
+    '#/page2': 'category-page-demo',
+    '#/about': 'navigation-showcase'
 };
 
 let currentPage = null;

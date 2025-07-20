@@ -1,45 +1,85 @@
 // Page metadata for SEO
 const pageMetadata = {
+    // Navigation showcase pages
+    '#/navigation-showcase': {
+        title: 'Navigation Showcase | Learning Hub',
+        description: 'Explore the flexible 3-level navigation system and learn how to organize content effectively.',
+        keywords: 'navigation, showcase, hierarchy, organization'
+    },
+    '#/category-page-demo': {
+        title: 'Category Page Demo | Learning Hub',
+        description: 'Demonstration of how pages work within categories for organized content structure.',
+        keywords: 'category, organization, content structure, demo'
+    },
+    '#/nested-page-demo': {
+        title: 'Nested Page Demo | Learning Hub',
+        description: 'Example of deep navigation hierarchy with subcategories and nested page organization.',
+        keywords: 'nested, subcategory, hierarchy, navigation structure'
+    },
+    
+    // Layout examples
+    '#/test-minimal': {
+        title: 'Minimal Content | Learning Hub',
+        description: 'Example of minimal content layout with clean, focused design.',
+        keywords: 'minimal, layout, clean design, content'
+    },
+    '#/test-full': {
+        title: 'Full Content | Learning Hub',
+        description: 'Example of full content layout with comprehensive information display.',
+        keywords: 'full content, layout, comprehensive, information'
+    },
+    '#/test-with-sidebar': {
+        title: 'With Right Sidebar | Learning Hub',
+        description: 'Example layout featuring a right sidebar for additional content and navigation.',
+        keywords: 'sidebar, layout, additional content, navigation'
+    },
+    '#/test-scrollable': {
+        title: 'Scrollable Sidebar | Learning Hub',
+        description: 'Example of scrollable sidebar layout for handling large amounts of secondary content.',
+        keywords: 'scrollable, sidebar, large content, secondary'
+    },
+    '#/components-gallery': {
+        title: 'Components Gallery | Learning Hub',
+        description: 'Showcase of all available UI components and styling elements in the framework.',
+        keywords: 'components, gallery, UI elements, styling, framework'
+    },
+    
+    // Legacy routes (for backwards compatibility)
     '#/page1': {
-        title: 'Page 1 | My App',
-        description: 'Learn about our framework and core concepts on Page 1.',
-        keywords: 'framework, web development, page 1'
+        title: 'Navigation Showcase | Learning Hub',
+        description: 'Explore the flexible 3-level navigation system and learn how to organize content effectively.',
+        keywords: 'navigation, showcase, hierarchy, organization'
     },
     '#/page2': {
-        title: 'Page 2 | My App', 
-        description: 'Discover advanced features and functionality on Page 2.',
-        keywords: 'advanced features, functionality, page 2'
-    },
-    '#/tool-a': {
-        title: 'Tool A | My App',
-        description: 'Powerful Tool A for enhanced productivity and workflow.',
-        keywords: 'tool a, productivity, workflow'
-    },
-    '#/tool-b': {
-        title: 'Tool B | My App',
-        description: 'Essential Tool B for streamlined development processes.',
-        keywords: 'tool b, development, processes'
+        title: 'Category Page Demo | Learning Hub',
+        description: 'Demonstration of how pages work within categories for organized content structure.',
+        keywords: 'category, organization, content structure, demo'
     },
     '#/about': {
-        title: 'About | My App',
-        description: 'Learn more about our mission, team, and company values.',
-        keywords: 'about, company, mission, team'
+        title: 'Navigation Showcase | Learning Hub',
+        description: 'Explore the flexible 3-level navigation system and learn how to organize content effectively.',
+        keywords: 'navigation, showcase, hierarchy, organization'
     },
     '#/profile': {
-        title: 'User Profile | My App',
+        title: 'User Profile | Learning Hub',
         description: 'Manage your user profile, settings, and account information.',
         keywords: 'profile, user account, settings'
     },
     '#/privacy': {
-        title: 'Privacy & Terms | My App',
+        title: 'Privacy & Terms | Learning Hub',
         description: 'Our privacy policy and terms of service for using our application.',
         keywords: 'privacy policy, terms of service, data protection'
     },
+    '#/test-404': {
+        title: '404 - Page Not Found | Learning Hub',
+        description: 'The requested page could not be found. Return to the main navigation to explore available content.',
+        keywords: '404, not found, error page'
+    },
     // Default/fallback metadata
     'default': {
-        title: 'My App - Web Application Framework',
-        description: 'A modern web application framework with powerful tools and features.',
-        keywords: 'web app, framework, tools, development'
+        title: 'Learning Hub - Web Application Framework',
+        description: 'A modern web application framework showcasing flexible navigation and layout patterns.',
+        keywords: 'web app, framework, navigation, layouts, learning'
     }
 };
 
