@@ -4,7 +4,7 @@ export function generateTOC(fromElement) {
     // Create container for the entire TOC
     const tocContainer = document.createElement('div');
     
-    // Add title - JetBrains style
+    // Add title
     const title = document.createElement('div');
     title.textContent = 'On this page';
     title.style.fontSize = '0.75rem';
