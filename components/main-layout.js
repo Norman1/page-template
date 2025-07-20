@@ -109,6 +109,46 @@ aside.right {
   padding: var(--spacing-lg) var(--spacing-md);
 }
 
+/* Right sidebar TOC styling - JetBrains style */
+aside.right ::slotted(*) {
+  font-size: 0.875rem;
+}
+
+aside.right ::slotted(ul) {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+aside.right ::slotted(li) {
+  margin: 0.125rem 0;
+}
+
+aside.right ::slotted(a) {
+  display: block;
+  color: #8b949e;
+  text-decoration: none;
+  padding: 0.375rem 0.75rem;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  border-left: 2px solid transparent;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+aside.right ::slotted(a:hover) {
+  background: rgba(88, 166, 255, 0.08);
+  color: var(--text-link);
+  border-left-color: var(--text-link);
+}
+
+aside.right ::slotted(a.active) {
+  background: rgba(88, 166, 255, 0.12);
+  color: var(--text-link);
+  border-left-color: var(--text-link);
+  font-weight: 500;
+}
+
 :host(:not([with-right])) {
   grid-template-columns: var(--sidebar-left-width) 1fr;
   grid-template-areas: 
@@ -128,6 +168,63 @@ main {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+}
+
+/* Content styling - JetBrains inspired */
+main ::slotted(h1) {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 1.5rem 0;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+main ::slotted(h2) {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 2rem 0 1rem 0;
+  color: var(--text-primary);
+  letter-spacing: -0.005em;
+}
+
+main ::slotted(h3) {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 1.5rem 0 0.75rem 0;
+  color: var(--text-primary);
+}
+
+main ::slotted(p) {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+  color: #e6edf3;
+  max-width: 65ch;
+}
+
+main ::slotted(a) {
+  color: var(--text-link);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+main ::slotted(a:hover) {
+  color: #79c0ff;
+  border-bottom-color: var(--text-link);
+}
+
+main ::slotted(code) {
+  font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  font-size: 0.875rem;
+  background: #21262d;
+  color: var(--text-primary);
+  padding: 0.125rem 0.375rem;
+  border-radius: 3px;
+  border: 1px solid var(--border-color);
 }
 
 /* Footer within main content */
