@@ -22,7 +22,8 @@
       "Bash(git commit:*)",
       "Bash(del test-scroll.js)",
       "Bash(npm install:*)",
-      "Bash(npx lighthouse:*)"
+      "Bash(npx lighthouse:*)",
+      "Bash(git push:*)"
     ],
     "deny": []
   }

@@ -34,7 +34,7 @@ class MainLayout extends HTMLElement {
   color: var(--text-primary);
   display: grid;
   grid-template-rows: var(--header-height) 1fr;
-  grid-template-columns: var(--sidebar-left-width) 1fr var(--sidebar-right-width);
+  grid-template-columns: var(--sidebar-left-width) 1fr minmax(0, var(--sidebar-right-width));
   grid-template-areas: 
     "header header header"
     "left main right";
@@ -107,6 +107,16 @@ aside.right {
   border-left: 1px solid var(--border-color-subtle);
   overflow-y: auto;
   padding: var(--spacing-lg) var(--spacing-md);
+  transition: width 0.2s ease, opacity 0.2s ease;
+}
+
+/* Auto-hide when empty using modern CSS */
+aside.right:empty,
+aside.right:not(:has(::slotted(*))) {
+  width: 0;
+  padding: 0;
+  border: none;
+  overflow: hidden;
 }
 
 /* Right sidebar TOC styling - JetBrains style */

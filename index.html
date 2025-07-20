@@ -5,6 +5,22 @@
     <title>Learning Hub - Modern Web Components Framework</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!-- Prevent layout shifts from scrollbars -->
+    <style>
+        html { 
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+        }
+        /* Reserve space for scrollbar to prevent layout shift */
+        body {
+            overflow-y: scroll;
+        }
+    </style>
+    
     <!-- SEO Meta Tags -->
     <meta name="description" content="A modern, responsive website template built with Web Components featuring Google authentication, Holy Grail layout, and professional design patterns.">
     <meta name="keywords" content="web components, responsive design, holy grail layout, google authentication, modern web development">
@@ -100,10 +116,20 @@
     // Initialize router
     initRouter();
     
-    // Preload critical templates for better performance
+    // Preload ALL templates for better performance and no layout shifts
     preloadTemplates([
         './templates/page-one.html',
-        './templates/page-two.html'
+        './templates/page-two.html',
+        './templates/tool-a.html',
+        './templates/tool-b.html',
+        './templates/page-about.html',
+        './templates/user-profile.html',
+        './templates/privacy-policy.html',
+        './templates/not-found.html',
+        './templates/test-with-sidebar.html',
+        './templates/test-scrollable.html',
+        './templates/test-minimal.html',
+        './templates/test-full.html'
     ]);
 </script>
 
