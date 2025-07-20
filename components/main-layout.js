@@ -9,7 +9,8 @@ class MainLayout extends HTMLElement {
   color: #f0f6fc;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
   box-sizing: border-box;
 }
 
@@ -68,7 +69,6 @@ main {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 60px);
 }
 
 /* Footer within main content */

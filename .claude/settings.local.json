@@ -19,7 +19,8 @@
       "Bash(timeout:*)",
       "Bash(node:*)",
       "WebFetch(domain:www.jetbrains.com)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(del test-scroll.js)"
     ],
     "deny": []
   }
