@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ae8fe20-6934-4840-8f11-ad5bac902685" name="Changes" comment="temp">
-      <change beforePath="$PROJECT_DIR$/components/main-layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/main-layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/test-full.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test-full.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +244,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753012508893</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="temp">
+      <option name="closed" value="true" />
+      <created>1753012961436</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1753012961436</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
