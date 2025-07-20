@@ -29,26 +29,26 @@ header {
 
 .layout {
   display: grid;
-  grid-template-columns: 240px 1fr 250px;
+  grid-template-columns: 200px 1fr 220px;
   gap: 0;
   flex: 1;
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 60px);
   width: 100vw;
 }
 
 :host(:not([with-right])) .layout {
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 200px 1fr;
 }
 
 /* Only limit main content on extremely wide screens */
 @media (min-width: 2400px) {
   .layout {
-    grid-template-columns: 240px minmax(auto, 1800px) 250px;
+    grid-template-columns: 200px minmax(auto, 1800px) 220px;
     justify-content: start;
   }
   
   :host(:not([with-right])) .layout {
-    grid-template-columns: 240px minmax(auto, 1800px);
+    grid-template-columns: 200px minmax(auto, 1800px);
   }
 }
 

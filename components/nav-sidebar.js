@@ -104,24 +104,24 @@ class NavSidebar extends HTMLElement {
 
       <div id="sidebar-nav">
         <div class="nav-section">
-          <button class="nav-toggle">Framework</button>
+          <button class="nav-toggle">Getting Started</button>
           <ul class="nav-items">
-            <li><a href="#/page1">Page 1</a></li>
-            <li><a href="#/page2">Page 2</a></li>
+            <li><a href="#/page1">Quick Start Guide</a></li>
+            <li><a href="#/page2">Advanced Configuration</a></li>
           </ul>
         </div>
 
         <div class="nav-section">
-          <button class="nav-toggle">Tools</button>
+          <button class="nav-toggle">Development Tools</button>
           <ul class="nav-items">
-            <li><a href="#/tool-a">Tool A</a></li>
-            <li><a href="#/tool-b">Tool B</a></li>
+            <li><a href="#/tool-a">Component Generator</a></li>
+            <li><a href="#/tool-b">Theme Customizer</a></li>
           </ul>
         </div>
         
         ${isLoggedIn ? `
         <div class="nav-section">
-          <button class="nav-toggle">User</button>
+          <button class="nav-toggle">Account</button>
           <ul class="nav-items">
             <li><a href="#/profile">My Profile</a></li>
           </ul>
@@ -129,9 +129,9 @@ class NavSidebar extends HTMLElement {
         ` : ''}
 
         <div class="nav-section">
-          <button class="nav-toggle">Other</button>
+          <button class="nav-toggle">Resources</button>
           <ul class="nav-items">
-            <li><a href="#/about">About</a></li>
+            <li><a href="#/about">About Learning Hub</a></li>
             <li><a href="#/privacy">Privacy & Terms</a></li>
             <li><a href="#/test-404">Test 404</a></li>
           </ul>

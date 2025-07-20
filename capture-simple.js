@@ -28,8 +28,8 @@ async function captureScreenshots() {
     
     const pages = [
         { name: 'home', path: '/' },
-        { name: 'page-one', path: '/#page1' },
-        { name: 'about', path: '/#about' }
+        { name: 'page-one', path: '#/page1' },
+        { name: 'about', path: '#/about' }
     ];
     
     for (const viewport of viewports) {

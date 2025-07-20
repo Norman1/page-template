@@ -18,7 +18,8 @@
       "Bash(curl:*)",
       "Bash(timeout:*)",
       "Bash(node:*)",
-      "WebFetch(domain:www.jetbrains.com)"
+      "WebFetch(domain:www.jetbrains.com)",
+      "Bash(git commit:*)"
     ],
     "deny": []
   }

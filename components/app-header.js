@@ -13,26 +13,30 @@ class AppHeader extends HTMLElement {
 
         .header {
           position: relative;
-          height: 180px;              /* adjust as needed */
+          height: 60px;              /* Much smaller, like IntelliJ docs */
           overflow: hidden;
+          background: #21262d;       /* Solid background instead of image */
+          border-bottom: 1px solid #30363d;
+          display: flex;
+          align-items: center;
+          padding: 0 1.5rem;
         }
 
-        .header img {
-          display: block;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;         /* fills the box, keeping aspect */
+        .site-title {
+          color: #f0f6fc;
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin: 0;
+          flex-grow: 1;
         }
 
         .auth-wrapper {
-          position: absolute;
-          top: 1rem;
-          right: 1.5rem;
+          margin-left: auto;
         }
       </style>
 
       <div class="header">
-        <img src="assets/header-banner.png" alt="Learning Hub Banner">
+        <h1 class="site-title">Learning Hub</h1>
         <div class="auth-wrapper">
           <custom-auth></custom-auth>
         </div>

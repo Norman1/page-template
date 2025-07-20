@@ -149,3 +149,188 @@ button:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(99, 179, 237, 0.8);
 }
+
+/* Documentation-specific styles */
+.intro-section {
+    background: rgba(34, 139, 34, 0.1);
+    border-left: 4px solid #22b14c;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 6px 6px 0;
+}
+
+.intro-section p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* Callout boxes for tips, warnings, etc. */
+.callout {
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 6px;
+    border-left: 4px solid;
+}
+
+.callout-info {
+    background: rgba(0, 149, 255, 0.1);
+    border-color: #0969da;
+    color: #79c0ff;
+}
+
+.callout-success {
+    background: rgba(34, 139, 34, 0.1);
+    border-color: #22b14c;
+    color: #7ee787;
+}
+
+.callout-warning {
+    background: rgba(255, 140, 0, 0.1);
+    border-color: #fb8500;
+    color: #ffc649;
+}
+
+.callout-error {
+    background: rgba(255, 69, 58, 0.1);
+    border-color: #ff6347;
+    color: #ffa198;
+}
+
+/* Code styling improvements */
+code {
+    background: rgba(45, 55, 72, 0.8);
+    color: #ffc649;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+    font-size: 0.875em;
+    font-weight: 400;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    color: #e6edf3;
+}
+
+pre {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 1rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+    font-size: 0.875rem;
+    line-height: 1.45;
+}
+
+/* Lists styling */
+ul, ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+li strong {
+    color: #ffc649;
+}
+
+/* Code tabs for multiple examples */
+.code-tabs {
+    margin: 1rem 0;
+}
+
+.tab-content {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: rgba(45, 55, 72, 0.3);
+    border-radius: 6px;
+    border-left: 3px solid #0969da;
+}
+
+.tab-content strong {
+    color: #79c0ff;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.tab-content pre {
+    margin: 0.5rem 0 0 0;
+    background: #0d1117;
+}
+
+/* Typography hierarchy improvements - IntelliJ style */
+h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    margin-top: 0;
+    color: #f0f6fc;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.375rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid #21262d;
+    line-height: 1.3;
+}
+
+h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Content width optimization */
+.content-area {
+    max-width: 1000px;
+    line-height: 1.6;
+}
+
+/* Better spacing for documentation content - more compact */
+p + h2, p + h3, ul + h2, ul + h3, ol + h2, ol + h3 {
+    margin-top: 1.5rem;
+}
+
+p {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+/* Compact list spacing */
+ul, ol {
+    margin-bottom: 0.75rem;
+}
+
+li {
+    margin-bottom: 0.25rem;
+}
+
+/* Improve link visibility */
+a {
+    color: #79c0ff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #a5d6ff;
+    text-decoration: underline;
+}
