@@ -1,22 +1,14 @@
+import { loadTemplate } from '../utils/template-loader.js';
+
 class TestMinimal extends HTMLElement {
-    connectedCallback() {
-        this.innerHTML = `
-            <div slot="main" id="main-content">
-                Loading...
-            </div>
-        `;
-        
-        this.loadContent();
-    }
-    
-    async loadContent() {
-        try {
-            const response = await fetch('./templates/test-minimal.html');
-            const content = await response.text();
-            document.getElementById('main-content').innerHTML = content;
-        } catch (error) {
-            document.getElementById('main-content').innerHTML = '<p>Error loading content</p>';
-        }
+    async connectedCallback() {
+        // Clear right sidebar
+        const layout = document.querySelector('main-layout');
+        layout?.removeAttribute('with-right');
+        layout?.querySelectorAll('[slot="right"]').forEach(el => el.remove());
+
+        const templateContent = await loadTemplate('./templates/test-minimal.html');
+        this.innerHTML = templateContent;
     }
 }
 
