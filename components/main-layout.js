@@ -9,7 +9,12 @@ class MainLayout extends HTMLElement {
   color: #f0f6fc;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 /* Non-sticky header */
@@ -31,7 +36,7 @@ aside.left {
   position: sticky;
   top: 0;
   width: 200px;
-  height: 100vh;
+  height: calc(100vh - 60px);
   background: #161b22;
   border-right: 1px solid #30363d;
   overflow-y: auto;
@@ -44,7 +49,7 @@ aside.right {
   position: sticky;
   top: 0;
   width: 220px;
-  height: 100vh;
+  height: calc(100vh - 60px);
   background: #161b22;
   border-left: 1px solid #30363d;
   overflow-y: auto;
@@ -63,7 +68,7 @@ main {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
 }
 
 /* Footer within main content */

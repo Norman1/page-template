@@ -57,6 +57,17 @@ async function captureScreenshots() {
                     fullPage: true
                 });
                 
+                // Also capture viewport-only shot for minimal content test
+                if (pageInfo.name === 'test-minimal' && viewport.name === 'desktop') {
+                    const viewportFilename = `${timestamp}_${pageInfo.name}_${viewport.name}_viewport.png`;
+                    const viewportFilepath = path.join(outputDir, viewportFilename);
+                    await page.screenshot({
+                        path: viewportFilepath,
+                        fullPage: false
+                    });
+                    console.log(`  ✅ Saved viewport: ${viewportFilename}`);
+                }
+                
                 console.log(`  ✅ Saved: ${filename}`);
             } catch (error) {
                 console.log(`  ❌ Error capturing ${pageInfo.name}: ${error.message}`);
