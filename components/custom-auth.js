@@ -17,21 +17,34 @@ class CustomAuth extends HTMLElement {
                 }
 
                 .auth-button {
-                    background: rgba(255, 255, 255, 0.9);
-                    border: 1px solid rgba(0, 0, 0, 0.2);
-                    color: #333;
-                    border-radius: 4px;
-                    padding: 0.5rem 1rem;
-                    font-size: 0.95rem;
+                    background: #0969da;
+                    border: 1px solid #0550ae;
+                    color: white;
+                    border-radius: 6px;
+                    padding: 6px 16px;
+                    font-size: 14px;
                     font-weight: 500;
                     cursor: pointer;
-                    transition: all 0.2s;
+                    transition: all 0.15s ease-in-out;
+                    text-align: center;
+                    line-height: 20px;
+                    min-height: 32px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    white-space: nowrap;
                 }
 
                 .auth-button:hover {
-                    background: white;
-                    border-color: rgba(0, 0, 0, 0.3);
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    background: #0860ca;
+                    border-color: #0550ae;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                }
+
+                .auth-button:active {
+                    background: #0757ba;
+                    border-color: #044289;
+                    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.15);
                 }
 
                 .user-display {

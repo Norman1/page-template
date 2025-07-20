@@ -7,7 +7,18 @@
       "Bash(file:*)",
       "Bash(cat:*)",
       "Bash(ls:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(python:*)",
+      "Bash(start /b python -m http.server 8080)",
+      "WebFetch(domain:localhost)",
+      "Bash(start python -m http.server 8080)",
+      "Bash(./run-visual-capture.bat)",
+      "Bash(docker-compose:*)",
+      "Bash(npm install)",
+      "Bash(curl:*)",
+      "Bash(timeout:*)",
+      "Bash(node:*)",
+      "WebFetch(domain:www.jetbrains.com)"
     ],
     "deny": []
   }

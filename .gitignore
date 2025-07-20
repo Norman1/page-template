@@ -31,3 +31,17 @@ Thumbs.db
 # Local configuration
 config/local.js
 config/secrets.js
+
+# Screenshots and visual captures
+screenshots/
+*.png
+*.jpg
+*.jpeg
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Docker
+.docker/
