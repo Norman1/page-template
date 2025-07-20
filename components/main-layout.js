@@ -7,44 +7,49 @@ class MainLayout extends HTMLElement {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #0f1419;
   color: #f0f6fc;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Fixed header */
+/* Non-sticky header */
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   height: 60px;
   background: #161b22;
   border-bottom: 1px solid #30363d;
-  z-index: 100;
+}
+
+/* Content wrapper with sidebars */
+.content-wrapper {
+  display: flex;
+  flex: 1;
 }
 
 /* Fixed left sidebar */
 aside.left {
-  position: fixed;
-  top: 60px;
-  left: 0;
+  position: sticky;
+  top: 0;
   width: 200px;
-  bottom: 0;
+  height: 100vh;
   background: #161b22;
   border-right: 1px solid #30363d;
   overflow-y: auto;
   padding: 1rem;
+  flex-shrink: 0;
 }
 
 /* Fixed right sidebar */
 aside.right {
-  position: fixed;
-  top: 60px;
-  right: 0;
+  position: sticky;
+  top: 0;
   width: 220px;
-  bottom: 0;
+  height: 100vh;
   background: #161b22;
   border-left: 1px solid #30363d;
   overflow-y: auto;
   padding: 1rem;
+  flex-shrink: 0;
 }
 
 :host(:not([with-right])) .right {
@@ -53,18 +58,12 @@ aside.right {
 
 /* Main content area - scrollable */
 main {
-  margin-top: 60px;
-  margin-left: 220px;
-  margin-right: 240px;
+  flex: 1;
   background: #161b22;
   padding: 1.5rem;
-  min-height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
-}
-
-:host(:not([with-right])) main {
-  margin-right: 0;
+  min-height: 100vh;
 }
 
 /* Footer within main content */
@@ -212,21 +211,23 @@ footer {
         <slot name="header"></slot>
       </header>
 
-      <aside class="left">
-        <slot name="nav"></slot>
-      </aside>
+      <div class="content-wrapper">
+        <aside class="left">
+          <slot name="nav"></slot>
+        </aside>
 
-      <main>
-        <slot name="main"></slot>
-        
-        <footer>
-          <slot name="footer"></slot>
-        </footer>
-      </main>
+        <main>
+          <slot name="main"></slot>
+          
+          <footer>
+            <slot name="footer"></slot>
+          </footer>
+        </main>
 
-      <aside class="right">
-        <slot name="right"></slot>
-      </aside>
+        <aside class="right">
+          <slot name="right"></slot>
+        </aside>
+      </div>
       
       <div class="mobile-overlay"></div>
     `;
