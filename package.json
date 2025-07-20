@@ -11,8 +11,14 @@
   "dependencies": {
     "puppeteer": "^22.0.0"
   },
-  "devDependencies": {},
-  "keywords": ["visual-testing", "screenshots", "automation"],
+  "devDependencies": {
+    "lighthouse": "^12.8.0"
+  },
+  "keywords": [
+    "visual-testing",
+    "screenshots",
+    "automation"
+  ],
   "author": "Claude Code Assistant",
   "license": "MIT"
 }

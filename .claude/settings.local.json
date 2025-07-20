@@ -20,7 +20,9 @@
       "Bash(node:*)",
       "WebFetch(domain:www.jetbrains.com)",
       "Bash(git commit:*)",
-      "Bash(del test-scroll.js)"
+      "Bash(del test-scroll.js)",
+      "Bash(npm install:*)",
+      "Bash(npx lighthouse:*)"
     ],
     "deny": []
   }
