@@ -21,6 +21,37 @@ class MainLayout extends HTMLElement {
   box-sizing: border-box;
 }
 
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(13, 17, 23, 0.3);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(48, 54, 61, 0.8);
+  border-radius: 5px;
+  border: 1px solid rgba(13, 17, 23, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(88, 166, 255, 0.4);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(88, 166, 255, 0.6);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(48, 54, 61, 0.8) rgba(13, 17, 23, 0.3);
+}
+
 /* Header */
 header {
   grid-area: header;
@@ -38,19 +69,19 @@ header ::slotted(*) {
 /* Left sidebar */
 aside.left {
   grid-area: left;
-  background: #161b22;
-  border-right: 1px solid #30363d;
+  background: #0d1117;
+  border-right: 1px solid rgba(48, 54, 61, 0.5);
   overflow-y: auto;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
 }
 
 /* Right sidebar */
 aside.right {
   grid-area: right;
-  background: #161b22;
-  border-left: 1px solid #30363d;
+  background: #0d1117;
+  border-left: 1px solid rgba(48, 54, 61, 0.5);
   overflow-y: auto;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
 }
 
 :host(:not([with-right])) {
