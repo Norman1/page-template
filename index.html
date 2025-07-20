@@ -2,11 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Christian Learning Hub</title>
+    <title>Learning Hub - Modern Web Components Framework</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A modern, responsive website template built with Web Components featuring Google authentication, Holy Grail layout, and professional design patterns.">
+    <meta name="keywords" content="web components, responsive design, holy grail layout, google authentication, modern web development">
+    <meta name="author" content="Learning Hub">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/">
+    <meta property="og:title" content="Learning Hub - Modern Web Components Framework">
+    <meta property="og:description" content="A modern, responsive website template built with Web Components featuring Google authentication, Holy Grail layout, and professional design patterns.">
+    <meta property="og:image" content="https://yourdomain.com/assets/og-image.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourdomain.com/">
+    <meta property="twitter:title" content="Learning Hub - Modern Web Components Framework">
+    <meta property="twitter:description" content="A modern, responsive website template built with Web Components featuring Google authentication, Holy Grail layout, and professional design patterns.">
+    <meta property="twitter:image" content="https://yourdomain.com/assets/og-image.png">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Learning Hub",
+      "description": "A modern, responsive website template built with Web Components",
+      "url": "https://yourdomain.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://yourdomain.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
 
     <!-- Load your layout component -->
     <script type="module" src="./components/main-layout.js"></script>
+    <script type="module" src="./components/nav-sidebar.js"></script>
+    <script type="module" src="./components/auth-guard.js"></script>
+    <script type="module" src="./utils/auth-service.js"></script>
+    <script type="module" src="./pages/page-one.js"></script>
+    <script type="module" src="./pages/page-two.js"></script>
+    <script type="module" src="./pages/tool-a.js"></script>
+    <script type="module" src="./pages/tool-b.js"></script>
+    <script type="module" src="./pages/page-about.js"></script>
+    <script type="module" src="./pages/not-found-page.js"></script>
+    <script type="module" src="./pages/user-profile.js"></script>
+    <script type="module" src="./pages/privacy-policy.js"></script>
+    <script type="module" src="./components/app-header.js"></script>
+    <script type="module" src="./components/app-footer.js"></script>
+
+
+
 
     <!-- (Optional) Add global CSS -->
     <link rel="stylesheet" href="./styles/global.css"/>
@@ -14,75 +72,35 @@
 <body>
 <main-layout>
     <div slot="header">
-        <h1>My Christian Learning Hub</h1>
+        <app-header slot="header"></app-header>
     </div>
 
     <div slot="nav">
-        <div id="sidebar-nav">
-            <div class="nav-section">
-                <button class="nav-toggle">Framework</button>
-                <ul class="nav-items">
-                    <li><a href="#/page1">Page 1</a></li>
-                    <li><a href="#/page2">Page 2</a></li>
-                </ul>
-            </div>
-
-            <div class="nav-section">
-                <button class="nav-toggle">Tools</button>
-                <ul class="nav-items">
-                    <li><a href="#/tool-a">Tool A</a></li>
-                    <li><a href="#/tool-b">Tool B</a></li>
-                </ul>
-            </div>
-
-            <div class="nav-section">
-                <button class="nav-toggle">Other</button>
-                <ul class="nav-items">
-                    <li><a href="#/about">About</a></li>
-                </ul>
-            </div>
-        </div>
+        <nav-sidebar></nav-sidebar>
     </div>
 
     <div slot="main">
-        <h2>Welcome!</h2>
-        <p>This is the main content area. Scroll to test sticky sidebars.</p>
-        <div style="height: 1500px;"></div>
+        <div id="router-view"></div>
     </div>
 
-    <div slot="right">
-        <p>Table of Contents</p>
-        <ul>
-            <li><a href="#section1">Intro</a></li>
-            <li><a href="#section2">Main Point</a></li>
-            <li><a href="#section3">Conclusion</a></li>
-        </ul>
-    </div>
 
     <div slot="footer">
-        <p>&copy; 2025 – <a href="https://github.com/yourname">My GitHub</a></p>
+        <app-footer slot="footer"></app-footer>
     </div>
 </main-layout>
 
-<script>
-    // Collapse logic
-    document.querySelectorAll('.nav-toggle').forEach(button => {
-        button.addEventListener('click', () => {
-            const list = button.nextElementSibling;
-            list.style.display = list.style.display === 'none' ? 'block' : 'none';
-        });
-    });
-
-    // Active link highlighting
-    function setActiveLink() {
-        const current = location.hash;
-        document.querySelectorAll('.nav-items a').forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === current);
-        });
-    }
-
-    window.addEventListener('hashchange', setActiveLink);
-    window.addEventListener('DOMContentLoaded', setActiveLink);
+<script type="module">
+    import { initRouter } from './utils/router.js';
+    import { preloadTemplates } from './utils/template-loader.js';
+    
+    // Initialize router
+    initRouter();
+    
+    // Preload critical templates for better performance
+    preloadTemplates([
+        './templates/page-one.html',
+        './templates/page-two.html'
+    ]);
 </script>
 
 </body>
