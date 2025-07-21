@@ -1,4 +1,5 @@
 import { generateTOC } from '../utils/toc-generator.js';
+import '../components/quiz-card.js';
 
 class ComponentsGallery extends HTMLElement {
     connectedCallback() {
@@ -571,6 +572,35 @@ console.log(result);&lt;/code&gt;&lt;/pre&gt;</code></pre>
 &lt;/div&gt;</code></pre>
                 </div>
                 
+                <h2>Autocomplete/Typeahead</h2>
+                
+                <p>Smart text input with suggestions from predefined lists:</p>
+                
+                <div class="autocomplete-wrapper">
+                    <label for="bible-book-input">Which Bible book? (try typing "gen", "matt", or "1 cor"):</label>
+                    <input type="text" id="bible-book-input" class="autocomplete-input" placeholder="Type a Bible book name...">
+                    <div class="autocomplete-dropdown"></div>
+                </div>
+                
+                <div class="autocomplete-wrapper">
+                    <label for="character-input">Biblical Character:</label>
+                    <input type="text" id="character-input" class="autocomplete-input" placeholder="Start typing a name...">
+                    <div class="autocomplete-dropdown"></div>
+                </div>
+                
+                <div class="tab-content">
+                    <strong>Autocomplete HTML:</strong>
+                    <pre><code>&lt;div class="autocomplete-wrapper"&gt;
+    &lt;label for="bible-book-input"&gt;Which Bible book?&lt;/label&gt;
+    &lt;input type="text" id="bible-book-input" class="autocomplete-input" placeholder="Type a Bible book name..."&gt;
+    &lt;div class="autocomplete-dropdown"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                
+                <div class="callout callout-info">
+                    <strong>Features:</strong> Type to search, use arrow keys to navigate, Enter to select, click to choose, Escape to close.
+                </div>
+                
                 <h2>Badges & Tags</h2>
                 
                 <h3>Standard Badges</h3>
@@ -669,6 +699,209 @@ console.log(result);&lt;/code&gt;&lt;/pre&gt;</code></pre>
 &lt;div class="message message-success compact"&gt;
     Quiz completed successfully!
 &lt;/div&gt;</code></pre>
+                </div>
+                
+                <h2>Quiz Cards</h2>
+                
+                <p>Interactive quiz cards with flexible input types, hints, and feedback:</p>
+                
+                <h3>Multiple Choice Quiz Card</h3>
+                <quiz-card question-id="q1" id="quizCard1" 
+                           difficulty="easy" 
+                           category="biblical-history" 
+                           bible-books="Exodus" 
+                           topics="ten-commandments,law" 
+                           estimated-time="45">
+                    <span slot="question">Which book of the Bible contains the Ten Commandments?</span>
+                    
+                    <div slot="answer-input">
+                        <div class="radio-wrapper">
+                            <input type="radio" id="q1-genesis" name="q1-answer" value="genesis">
+                            <label for="q1-genesis">Genesis</label>
+                        </div>
+                        <div class="radio-wrapper">
+                            <input type="radio" id="q1-exodus" name="q1-answer" value="exodus">
+                            <label for="q1-exodus">Exodus</label>
+                        </div>
+                        <div class="radio-wrapper">
+                            <input type="radio" id="q1-numbers" name="q1-answer" value="numbers">
+                            <label for="q1-numbers">Numbers</label>
+                        </div>
+                        <div class="radio-wrapper">
+                            <input type="radio" id="q1-deut" name="q1-answer" value="deuteronomy">
+                            <label for="q1-deut">Deuteronomy</label>
+                        </div>
+                    </div>
+                    
+                    <span slot="correct-answer">Exodus</span>
+                    
+                    <div slot="explanation">
+                        The Ten Commandments appear in <strong>Exodus 20:1-17</strong> and are repeated in Deuteronomy 5:4-21. 
+                        They were given to Moses on Mount Sinai as part of the covenant between God and Israel.
+                        <br><br>
+                        <a href="#">Read more about the Ten Commandments →</a>
+                    </div>
+                </quiz-card>
+                
+                <div class="tab-content">
+                    <strong>Multiple Choice HTML:</strong>
+                    <pre><code>&lt;quiz-card question-id="q1" 
+           difficulty="easy" 
+           category="biblical-history" 
+           bible-books="Exodus" 
+           topics="ten-commandments,law"&gt;
+    &lt;span slot="question"&gt;Which book contains the Ten Commandments?&lt;/span&gt;
+    
+    &lt;div slot="answer-input"&gt;
+        &lt;div class="radio-wrapper"&gt;
+            &lt;input type="radio" id="q1-exodus" name="q1-answer" value="exodus"&gt;
+            &lt;label for="q1-exodus"&gt;Exodus&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;!-- More options... --&gt;
+    &lt;/div&gt;
+    
+    &lt;span slot="correct-answer"&gt;Exodus&lt;/span&gt;
+    
+    &lt;div slot="explanation"&gt;
+        The Ten Commandments appear in Exodus 20:1-17.
+        &lt;a href="#"&gt;Read more →&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/quiz-card&gt;</code></pre>
+                </div>
+                
+                <h3>Checkbox Quiz Card</h3>
+                <quiz-card question-id="q2" id="quizCard2" 
+                           difficulty="medium" 
+                           category="theology" 
+                           bible-books="Galatians" 
+                           topics="fruits-of-spirit,holy-spirit" 
+                           estimated-time="90">
+                    <span slot="question">Select all the fruits of the Spirit mentioned in Galatians 5:22-23:</span>
+                    
+                    <div slot="answer-input">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="q2-love" value="love">
+                            <label for="q2-love">Love</label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="q2-joy" value="joy">
+                            <label for="q2-joy">Joy</label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="q2-peace" value="peace">
+                            <label for="q2-peace">Peace</label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="q2-wisdom" value="wisdom">
+                            <label for="q2-wisdom">Wisdom (not a fruit)</label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="q2-patience" value="patience">
+                            <label for="q2-patience">Patience</label>
+                        </div>
+                    </div>
+                    
+                    <span slot="correct-answer">Love, Joy, Peace, Patience</span>
+                    
+                    <div slot="explanation">
+                        The complete list includes: love, joy, peace, forbearance (patience), kindness, 
+                        goodness, faithfulness, gentleness and self-control. Note that "wisdom" is not 
+                        listed among the fruits of the Spirit.
+                    </div>
+                </quiz-card>
+                
+                <h3>Text Input Quiz Card</h3>
+                <quiz-card question-id="q3" id="quizCard3" 
+                           difficulty="medium" 
+                           category="biblical-history" 
+                           bible-books="1 Samuel" 
+                           topics="kings,samuel,saul" 
+                           estimated-time="60">
+                    <span slot="question">Who was the first king of Israel?</span>
+                    
+                    <div slot="answer-input">
+                        <div class="input-wrapper">
+                            <input type="text" id="q3-answer" class="input-medium" placeholder="Type your answer...">
+                        </div>
+                    </div>
+                    
+                    <span slot="correct-answer">Saul</span>
+                    
+                    <div slot="explanation">
+                        Saul was anointed as the first king of Israel by the prophet Samuel around 1020 BC. 
+                        The story is found in 1 Samuel 9-10. Though he started well, Saul later disobeyed God 
+                        and was eventually replaced by David.
+                        <br><br>
+                        <em>"So Samuel took a flask of olive oil and poured it on Saul's head and kissed him, 
+                        saying, 'Has not the Lord anointed you ruler over his inheritance?'" - 1 Samuel 10:1</em>
+                    </div>
+                </quiz-card>
+                
+                <div class="tab-content">
+                    <strong>Quiz Card Events:</strong>
+                    <pre><code>// Listen for quiz events
+const quizCard = document.querySelector('quiz-card');
+
+quizCard.addEventListener('validate-answer', (e) => {
+    // Check the user's answer and set result
+    const isCorrect = checkAnswer(e.detail);
+    quizCard.setValidationResult(isCorrect);
+    
+    // Optional: Mark wrong answers visually
+    if (!isCorrect) {
+        quizCard.markWrongAnswers('.wrong-selection');
+    }
+});
+
+quizCard.addEventListener('answer-revealed', (e) => {
+    console.log('Answer revealed:', e.detail);
+    // Send to backend: questionId, correct, hadUserInput, timestamp
+});
+
+quizCard.addEventListener('next-question', (e) => {
+    // Load next question or navigate
+    loadNextQuestion();
+});</code></pre>
+                </div>
+                
+                <div class="callout callout-info">
+                    <strong>Key Features:</strong>
+                    <ul>
+                        <li><strong>Visual Feedback:</strong> Green success, red error, blue info messages</li>
+                        <li><strong>Flexible Input:</strong> Any HTML input type works in the answer-input slot</li>
+                        <li><strong>Rich Explanations:</strong> Support for links, formatting, scripture quotes</li>
+                        <li><strong>Smart Handling:</strong> Different feedback for correct/incorrect/no answer</li>
+                        <li><strong>Metadata Support:</strong> Track difficulty, topics, Bible books, etc.</li>
+                    </ul>
+                </div>
+                
+                <h3>Quiz Card Metadata</h3>
+                <p>Each quiz card supports metadata attributes for tracking and analytics:</p>
+                
+                <div class="tab-content">
+                    <strong>Metadata Attributes:</strong>
+                    <pre><code>&lt;quiz-card question-id="q1" 
+           difficulty="easy|medium|hard" 
+           category="biblical-history|theology|doctrine" 
+           bible-books="Genesis,Exodus" 
+           topics="creation,law,prophets" 
+           estimated-time="60" 
+           points="1"&gt;
+    &lt;!-- Question content --&gt;
+&lt;/quiz-card&gt;
+
+// Metadata is included in events:
+quizCard.addEventListener('answer-revealed', (e) => {
+    console.log(e.detail.metadata);
+    // {
+    //   difficulty: "medium",
+    //   topics: ["kings", "samuel"],
+    //   bibleBooks: ["1 Samuel"],
+    //   category: "biblical-history",
+    //   estimatedTime: 60,
+    //   points: 1
+    // }
+});</code></pre>
                 </div>
                 
                 <h2>Available CSS Classes</h2>
@@ -778,6 +1011,12 @@ console.log(result);&lt;/code&gt;&lt;/pre&gt;</code></pre>
 
         // Make toggle switches interactive
         this.setupToggleSwitches();
+        
+        // Setup autocomplete functionality
+        this.setupAutocomplete();
+        
+        // Setup quiz cards
+        this.setupQuizCards();
     }
 
     setupToggleSwitches() {
@@ -805,6 +1044,224 @@ console.log(result);&lt;/code&gt;&lt;/pre&gt;</code></pre>
                     }
                 });
             }
+        });
+    }
+
+    setupAutocomplete() {
+        // Bible books data for autocomplete
+        const bibleBooks = [
+            'Genesis', 'Exodus', 'Leviticus', 'Numbers', 'Deuteronomy',
+            'Joshua', 'Judges', 'Ruth', '1 Samuel', '2 Samuel',
+            '1 Kings', '2 Kings', '1 Chronicles', '2 Chronicles', 'Ezra',
+            'Nehemiah', 'Esther', 'Job', 'Psalms', 'Proverbs',
+            'Ecclesiastes', 'Song of Solomon', 'Isaiah', 'Jeremiah', 'Lamentations',
+            'Ezekiel', 'Daniel', 'Hosea', 'Joel', 'Amos',
+            'Obadiah', 'Jonah', 'Micah', 'Nahum', 'Habakkuk',
+            'Zephaniah', 'Haggai', 'Zechariah', 'Malachi',
+            'Matthew', 'Mark', 'Luke', 'John', 'Acts',
+            'Romans', '1 Corinthians', '2 Corinthians', 'Galatians', 'Ephesians',
+            'Philippians', 'Colossians', '1 Thessalonians', '2 Thessalonians', '1 Timothy',
+            '2 Timothy', 'Titus', 'Philemon', 'Hebrews', 'James',
+            '1 Peter', '2 Peter', '1 John', '2 John', '3 John',
+            'Jude', 'Revelation'
+        ];
+
+        // Setup autocomplete for each autocomplete input
+        this.querySelectorAll('.autocomplete-wrapper').forEach(wrapper => {
+            const input = wrapper.querySelector('.autocomplete-input');
+            const dropdown = wrapper.querySelector('.autocomplete-dropdown');
+            let highlightedIndex = -1;
+
+            // Filter and display suggestions
+            function showSuggestions(query) {
+                if (query.length === 0) {
+                    dropdown.classList.remove('show');
+                    return;
+                }
+
+                const filtered = bibleBooks.filter(book => 
+                    book.toLowerCase().includes(query.toLowerCase())
+                );
+
+                if (filtered.length === 0) {
+                    dropdown.innerHTML = '<div class="autocomplete-no-results">No matches found</div>';
+                    dropdown.classList.add('show');
+                    highlightedIndex = -1;
+                    return;
+                }
+
+                dropdown.innerHTML = filtered.map((book, index) => {
+                    const highlighted = book.replace(
+                        new RegExp(`(${query})`, 'gi'),
+                        '<span class="autocomplete-match">$1</span>'
+                    );
+                    return `<div class="autocomplete-option" data-value="${book}" data-index="${index}">${highlighted}</div>`;
+                }).join('');
+
+                dropdown.classList.add('show');
+                highlightedIndex = -1;
+            }
+
+            // Handle input changes
+            input.addEventListener('input', (e) => {
+                showSuggestions(e.target.value);
+            });
+
+            // Handle keyboard navigation
+            input.addEventListener('keydown', (e) => {
+                const options = dropdown.querySelectorAll('.autocomplete-option');
+                
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    highlightedIndex = Math.min(highlightedIndex + 1, options.length - 1);
+                    updateHighlight(options);
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    highlightedIndex = Math.max(highlightedIndex - 1, -1);
+                    updateHighlight(options);
+                } else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (highlightedIndex >= 0 && options[highlightedIndex]) {
+                        selectOption(options[highlightedIndex]);
+                    }
+                } else if (e.key === 'Escape') {
+                    dropdown.classList.remove('show');
+                    highlightedIndex = -1;
+                }
+            });
+
+            // Handle option selection
+            dropdown.addEventListener('click', (e) => {
+                if (e.target.classList.contains('autocomplete-option')) {
+                    selectOption(e.target);
+                }
+            });
+
+            // Update highlighting
+            function updateHighlight(options) {
+                options.forEach((option, index) => {
+                    option.classList.toggle('highlighted', index === highlightedIndex);
+                });
+            }
+
+            // Select an option
+            function selectOption(option) {
+                input.value = option.dataset.value;
+                dropdown.classList.remove('show');
+                highlightedIndex = -1;
+                // Trigger change event for form handling
+                input.dispatchEvent(new Event('change'));
+            }
+
+            // Hide dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!wrapper.contains(e.target)) {
+                    dropdown.classList.remove('show');
+                    highlightedIndex = -1;
+                }
+            });
+        });
+    }
+    
+    setupQuizCards() {
+        // Setup validation for quiz card demos
+        const quizCard1 = this.querySelector('#quizCard1');
+        const quizCard2 = this.querySelector('#quizCard2');
+        const quizCard3 = this.querySelector('#quizCard3');
+        
+        // Multiple choice quiz validation
+        if (quizCard1) {
+            quizCard1.addEventListener('validate-answer', (e) => {
+                const selected = quizCard1.querySelector('input[name="q1-answer"]:checked');
+                const isCorrect = selected && selected.value === 'exodus';
+                
+                quizCard1.setValidationResult(isCorrect);
+                
+                if (!isCorrect && selected) {
+                    // Mark wrong answer
+                    quizCard1.markWrongAnswers(`input[name="q1-answer"]:checked`);
+                }
+                
+                if (isCorrect && selected) {
+                    // Highlight correct answer
+                    quizCard1.highlightCorrectAnswer(`input[value="exodus"]`);
+                }
+            });
+            
+            quizCard1.addEventListener('answer-revealed', (e) => {
+                console.log('Quiz 1 answer revealed:', e.detail);
+            });
+            
+            quizCard1.addEventListener('next-question', () => {
+                console.log('Next question requested for quiz 1');
+            });
+        }
+        
+        // Checkbox quiz validation
+        if (quizCard2) {
+            quizCard2.addEventListener('validate-answer', (e) => {
+                const checked = Array.from(quizCard2.querySelectorAll('input[type="checkbox"]:checked'))
+                    .map(cb => cb.value);
+                const correct = ['love', 'joy', 'peace', 'patience'];
+                const isCorrect = correct.length === checked.length && 
+                    correct.every(fruit => checked.includes(fruit));
+                
+                quizCard2.setValidationResult(isCorrect);
+                
+                if (!isCorrect) {
+                    // Mark wrong selections
+                    quizCard2.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                        if (cb.checked && !correct.includes(cb.value)) {
+                            // Wrong selection
+                            quizCard2.markWrongAnswers(`input[value="${cb.value}"]`);
+                        } else if (!cb.checked && correct.includes(cb.value)) {
+                            // Missed correct answer
+                            const wrapper = cb.closest('.checkbox-wrapper');
+                            wrapper.style.background = 'rgba(46, 160, 67, 0.1)';
+                            wrapper.style.border = '1px solid rgba(46, 160, 67, 0.3)';
+                        }
+                    });
+                }
+                
+                if (isCorrect) {
+                    // Highlight all correct answers
+                    correct.forEach(value => {
+                        quizCard2.highlightCorrectAnswer(`input[value="${value}"]`);
+                    });
+                }
+            });
+        }
+        
+        // Text input quiz validation
+        if (quizCard3) {
+            const input = quizCard3.querySelector('#q3-answer');
+            
+            // Validation
+            quizCard3.addEventListener('validate-answer', (e) => {
+                const answer = input.value.trim().toLowerCase();
+                const isCorrect = answer === 'saul';
+                
+                quizCard3.setValidationResult(isCorrect);
+                
+                if (!isCorrect && answer) {
+                    input.style.color = 'var(--error-color)';
+                    input.style.textDecoration = 'line-through';
+                } else if (isCorrect) {
+                    input.style.color = 'var(--success-color)';
+                    input.style.background = 'rgba(46, 160, 67, 0.1)';
+                }
+            });
+        }
+        
+        // Log all quiz events for demo purposes
+        this.querySelectorAll('quiz-card').forEach(card => {
+            card.addEventListener('answer-revealed', (e) => {
+                console.log('Answer revealed:', e.detail);
+            });
+            
+            card.addEventListener('next-question', (e) => {
+                console.log('Next question requested:', e.detail);
+            });
         });
     }
 }
