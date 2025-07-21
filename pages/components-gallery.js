@@ -1,5 +1,6 @@
 import { generateTOC } from '../utils/toc-generator.js';
 import '../components/quiz-card.js';
+import '../components/hierarchical-tree-selector.js';
 
 class ComponentsGallery extends HTMLElement {
     connectedCallback() {
@@ -904,6 +905,68 @@ quizCard.addEventListener('answer-revealed', (e) => {
 });</code></pre>
                 </div>
                 
+                <h2>Hierarchical Tree Selector</h2>
+                
+                <p>Generic hierarchical tree selector for choosing items from organized data with smart grouping:</p>
+                
+                <h3>Default Example (Programming Languages)</h3>
+                <hierarchical-tree-selector id="techSelector"></hierarchical-tree-selector>
+                
+                <h3>Custom Data Example (Bible Books)</h3>
+                <hierarchical-tree-selector id="bibleSelector"
+                    title="Select Bible Books"
+                    data='{"Old Testament":{"Law":["Genesis","Exodus","Leviticus","Numbers","Deuteronomy"],"Historical":["Joshua","Judges","Ruth","1 Samuel","2 Samuel"],"Wisdom":["Job","Psalms","Proverbs","Ecclesiastes"]},"New Testament":{"Gospels":["Matthew","Mark","Luke","John"],"Letters":["Romans","1 Corinthians","Ephesians","Philippians"]}}'>
+                </hierarchical-tree-selector>
+                
+                <h3>Simple Example (No Presets)</h3>
+                <hierarchical-tree-selector id="simpleSelector"
+                    title="Choose Categories" 
+                    allow-presets="false"
+                    data='{"Food":{"Fruits":["Apple","Banana","Orange"],"Vegetables":["Carrot","Broccoli","Spinach"]},"Beverages":{"Hot":["Coffee","Tea","Hot Chocolate"],"Cold":["Water","Juice","Soda"]}}'>
+                </hierarchical-tree-selector>
+                
+                <div class="tab-content">
+                    <strong>Tree Selector HTML:</strong>
+                    <pre><code>&lt;!-- Default with demo data --&gt;
+&lt;hierarchical-tree-selector&gt;&lt;/hierarchical-tree-selector&gt;
+
+&lt;!-- Custom data and title --&gt;
+&lt;hierarchical-tree-selector 
+    title="Select Bible Books"
+    data='{"Old Testament":{"Law":["Genesis","Exodus"]}}'&gt;
+&lt;/hierarchical-tree-selector&gt;
+
+&lt;!-- Disable preset buttons --&gt;
+&lt;hierarchical-tree-selector 
+    allow-presets="false"
+    selected-items='["Apple","Banana"]'&gt;
+&lt;/hierarchical-tree-selector&gt;
+
+// Listen for selection changes
+selector.addEventListener('selection-changed', (e) => {
+    console.log('Selected items:', e.detail.selectedItems);
+    console.log('Count:', e.detail.count);
+});
+
+// Programmatic control
+selector.setSelectedItems(['JavaScript', 'Python']);
+selector.setData({...}); // Update data structure
+selector.getSelectedItems(); // Get current selection
+selector.reset(); // Clear all selections</code></pre>
+                </div>
+                
+                <div class="callout callout-info">
+                    <strong>Tree Selector Features:</strong>
+                    <ul>
+                        <li><strong>Generic Data Structure:</strong> Works with any Group → Category → Items hierarchy</li>
+                        <li><strong>Bulk Selection:</strong> Click groups/categories to select all items in that section</li>
+                        <li><strong>Configurable:</strong> Custom title, data, preset buttons, initial selection</li>
+                        <li><strong>Visual Feedback:</strong> Selected count, indeterminate states for partial selections</li>
+                        <li><strong>Expandable Tree:</strong> Collapse/expand sections to save space</li>
+                        <li><strong>Mobile Friendly:</strong> Responsive design that works on all screen sizes</li>
+                    </ul>
+                </div>
+                
                 <h2>Available CSS Classes</h2>
                 
                 <p>Here's a quick reference of all available CSS classes:</p>
@@ -1017,6 +1080,9 @@ quizCard.addEventListener('answer-revealed', (e) => {
         
         // Setup quiz cards
         this.setupQuizCards();
+        
+        // Setup bible book selector
+        this.setupBibleSelector();
     }
 
     setupToggleSwitches() {
@@ -1263,6 +1329,21 @@ quizCard.addEventListener('answer-revealed', (e) => {
                 console.log('Next question requested:', e.detail);
             });
         });
+    }
+    
+    setupBibleSelector() {
+        const bibleSelector = this.querySelector('#bibleSelector');
+        
+        if (bibleSelector) {
+            // Log selection changes for demo
+            bibleSelector.addEventListener('selection-changed', (e) => {
+                console.log('Bible books selected:', e.detail.selectedBooks);
+                console.log('Total count:', e.detail.count);
+                
+                // You could update UI here to show selected books
+                // For demo purposes, just log to console
+            });
+        }
     }
 }
 
