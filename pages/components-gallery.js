@@ -1,6 +1,7 @@
 import { generateTOC } from '../utils/toc-generator.js';
 import '../components/quiz-card.js';
 import '../components/hierarchical-tree-selector.js';
+import '../components/collapsible-section.js';
 
 class ComponentsGallery extends HTMLElement {
     connectedCallback() {
@@ -967,6 +968,131 @@ selector.reset(); // Clear all selections</code></pre>
                     </ul>
                 </div>
                 
+                <h2>Collapsible Sections</h2>
+                
+                <p>Collapsible sections for organizing content with clear previews and smooth animations:</p>
+                
+                <h3>Basic Examples</h3>
+                
+                <collapsible-section title="Game Settings" summary="Configure difficulty, time limits, and preferences" id="settingsSection">
+                    <div class="input-wrapper">
+                        <label for="difficulty">Difficulty Level:</label>
+                        <select id="difficulty" class="select-medium">
+                            <option>Easy</option>
+                            <option>Medium</option>
+                            <option>Hard</option>
+                        </select>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="timeLimit">Time Limit (minutes):</label>
+                        <input type="number" id="timeLimit" class="input-small" value="10" min="1" max="60">
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="hints" checked>
+                        <label for="hints">Enable hints</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="sounds">
+                        <label for="sounds">Enable sound effects</label>
+                    </div>
+                </collapsible-section>
+                
+                <collapsible-section title="Instructions" summary="How to play this game and scoring rules" expanded="true">
+                    <div class="callout callout-info">
+                        <strong>How to Play:</strong>
+                        <ol>
+                            <li>Select the Bible books you want to include</li>
+                            <li>A random passage will be shown</li>
+                            <li>Find the passage in your physical Bible</li>
+                            <li>Use hints if you're stuck</li>
+                        </ol>
+                    </div>
+                    <p>This game helps improve your Bible navigation skills by practicing with real passages from the books you choose.</p>
+                </collapsible-section>
+                
+                <h3>Visual Variants</h3>
+                
+                <collapsible-section title="Card Style" summary="Elevated appearance with shadow" variant="card">
+                    <p>This variant has a subtle shadow and elevated appearance, perfect for important sections or forms.</p>
+                    <button class="btn-primary">Sample Action</button>
+                </collapsible-section>
+                
+                <collapsible-section title="Flat Style" summary="Minimal styling for inline content" variant="flat">
+                    <p>The flat variant has no background or border, just a clean line separator. Good for FAQ sections or documentation.</p>
+                </collapsible-section>
+                
+                <collapsible-section title="Accent Style" summary="Left border accent for emphasis" variant="accent">
+                    <p>This variant includes a colored left border to draw attention to important sections.</p>
+                </collapsible-section>
+                
+                <h3>With Status & Count</h3>
+                
+                <collapsible-section title="Active Section" summary="Currently processing items" id="activeSection">
+                    <p>This section has an active status indicator (green dot) to show it's currently active or processing.</p>
+                    <div class="message message-success">
+                        Processing completed successfully!
+                    </div>
+                </collapsible-section>
+                
+                <collapsible-section title="Selected Items" summary="View and manage your selections" id="itemsSection">
+                    <p>This section shows a count badge indicating how many items are selected.</p>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="item1" checked>
+                        <label for="item1">Genesis</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="item2" checked>
+                        <label for="item2">Matthew</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="item3">
+                        <label for="item3">Psalms</label>
+                    </div>
+                </collapsible-section>
+                
+                <div class="tab-content">
+                    <strong>Collapsible Section HTML:</strong>
+                    <pre><code>&lt;!-- Basic section --&gt;
+&lt;collapsible-section title="Settings" summary="Configure your preferences"&gt;
+    &lt;!-- Your content here --&gt;
+&lt;/collapsible-section&gt;
+
+&lt;!-- Expanded by default --&gt;
+&lt;collapsible-section title="Instructions" expanded="true"&gt;
+    &lt;p&gt;Game instructions...&lt;/p&gt;
+&lt;/collapsible-section&gt;
+
+&lt;!-- Different visual styles --&gt;
+&lt;collapsible-section title="Card" variant="card"&gt;...&lt;/collapsible-section&gt;
+&lt;collapsible-section title="Flat" variant="flat"&gt;...&lt;/collapsible-section&gt;
+&lt;collapsible-section title="Accent" variant="accent"&gt;...&lt;/collapsible-section&gt;
+
+// JavaScript control
+const section = document.querySelector('collapsible-section');
+
+section.addEventListener('toggle', (e) => {
+    console.log('Section toggled:', e.detail.expanded);
+});
+
+section.expand();       // Programmatically expand
+section.collapse();     // Programmatically collapse
+section.setCount(5);    // Show count badge
+section.setStatus('active'); // Set status indicator</code></pre>
+                </div>
+                
+                <div class="callout callout-info">
+                    <strong>Collapsible Section Features:</strong>
+                    <ul>
+                        <li><strong>Clear Preview:</strong> Summary text shows what's inside when collapsed</li>
+                        <li><strong>Independent Operation:</strong> Multiple sections can be open simultaneously</li>
+                        <li><strong>Visual Variants:</strong> Card, flat, and accent styling options</li>
+                        <li><strong>Status Indicators:</strong> Color-coded dots for active/warning/error states</li>
+                        <li><strong>Count Badges:</strong> Show number of items or selections</li>
+                        <li><strong>Smooth Animations:</strong> Smooth expand/collapse with content fade-in</li>
+                        <li><strong>Accessible:</strong> Keyboard navigation and proper ARIA attributes</li>
+                    </ul>
+                </div>
+                
                 <h2>Available CSS Classes</h2>
                 
                 <p>Here's a quick reference of all available CSS classes:</p>
@@ -1083,6 +1209,9 @@ selector.reset(); // Clear all selections</code></pre>
         
         // Setup bible book selector
         this.setupBibleSelector();
+        
+        // Setup collapsible sections
+        this.setupCollapsibleSections();
     }
 
     setupToggleSwitches() {
@@ -1344,6 +1473,45 @@ selector.reset(); // Clear all selections</code></pre>
                 // For demo purposes, just log to console
             });
         }
+    }
+    
+    setupCollapsibleSections() {
+        // Set up status and count for demo sections
+        const activeSection = this.querySelector('#activeSection');
+        const itemsSection = this.querySelector('#itemsSection');
+        
+        if (activeSection) {
+            activeSection.setStatus('active');
+            
+            activeSection.addEventListener('toggle', (e) => {
+                console.log('Active section toggled:', e.detail.expanded);
+            });
+        }
+        
+        if (itemsSection) {
+            // Count checked checkboxes
+            const updateItemCount = () => {
+                const checkedItems = itemsSection.querySelectorAll('input[type="checkbox"]:checked');
+                itemsSection.setCount(checkedItems.length);
+            };
+            
+            // Initial count
+            updateItemCount();
+            
+            // Update count when checkboxes change
+            itemsSection.addEventListener('change', (e) => {
+                if (e.target.type === 'checkbox') {
+                    updateItemCount();
+                }
+            });
+        }
+        
+        // Log all section toggle events for demo
+        this.querySelectorAll('collapsible-section').forEach(section => {
+            section.addEventListener('toggle', (e) => {
+                console.log(`Section "${e.detail.title}" ${e.detail.expanded ? 'expanded' : 'collapsed'}`);
+            });
+        });
     }
 }
 
