@@ -28,7 +28,8 @@
       "WebFetch(domain:christianity.nghood.com)",
       "Bash(git push:*)",
       "WebFetch(domain:norman1.github.io)",
-      "Bash(del:*)"
+      "Bash(del:*)",
+      "Bash(git rm:*)"
     ],
     "deny": []
   }
