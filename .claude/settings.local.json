@@ -25,7 +25,9 @@
       "Bash(npx lighthouse:*)",
       "Bash(git branch:*)",
       "Bash(git checkout:*)",
-      "WebFetch(domain:christianity.nghood.com)"
+      "WebFetch(domain:christianity.nghood.com)",
+      "Bash(git push:*)",
+      "WebFetch(domain:norman1.github.io)"
     ],
     "deny": []
   }
